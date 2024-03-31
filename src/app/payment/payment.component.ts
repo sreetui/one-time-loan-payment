@@ -158,6 +158,6 @@ export class PaymentComponent implements OnInit {
     });
     openDialog.afterClosed().subscribe((data) => {
       this.resetForm();
-    })
+    });
   }
 }
