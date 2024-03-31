@@ -138,7 +138,7 @@
                         <div class="exp-cvv-grid">
                             <div class="form-group exp-cvv-item">
                                 <label for="expiration" class="required">Expiration </label>
-                                <input id="expiration" type="month" formControlName="expirationDate" class="">
+                                <input id="expiration" type="month" [min]="expirationDateMin()" formControlName="expirationDate" class="">
                                 <div *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched)"
                                     class="alert alert-danger">
                                     <div *ngIf="expirationDate.errors?.['required']">Expiration is required.</div>

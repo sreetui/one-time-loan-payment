@@ -1,10 +1,10 @@
 import { AsyncPipe, JsonPipe, NgFor, NgIf, NgOptimizedImage } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Signal, computed, inject, signal } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { bankNumberConfirmBankNumberValidator, numberPatternFunction, wordPatternFunction } from './services/payment-validators.service';
 import { PaymentFacade } from './state/payment.facade';
 import { Payment, PaymentResponse } from './state/model/payment';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, count } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
@@ -24,6 +24,18 @@ export class PaymentComponent implements OnInit {
   readonly DEBIT_TYPE = "Debit";
   readonly CHECKING_TYPE = "Checking";
   readonly STYLE:{[key:string]: any} = {'width': '3rem', 'height': '3rem'};
+  
+  readonly currentDate = signal(new Date());
+  expirationDateMin: Signal<string> = computed(() => {
+    const year = this.currentDate().getFullYear();
+    // increment month by 1 as it starts from 0
+    let monthN = (this.currentDate().getMonth()) + 1;
+    let month:string = `${monthN}`;
+    if(monthN < 10){
+      month = `0${month}`;
+    }
+    return `${year}-${month}`;
+  });
 
   paymentFB = inject(FormBuilder);
   paymentForm = this.paymentFB.group({
