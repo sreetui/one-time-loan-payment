@@ -1,0 +1,164 @@
+<div class="card border-0">
+    <div class="card-body">
+        <h2 class="card-title">One-time Loan Payment</h2>
+        <p class="card-text">Fill out the form below to complete your payment.</p>
+        <ng-container *ngIf="processingPayment | async">
+            <app-spinner [style]="STYLE"></app-spinner>
+        </ng-container>
+        <form [formGroup]="paymentForm" #formDir="ngForm" (ngSubmit)="makePayment()">
+            <div class="grid-container">
+                <div class="item">
+                    <div class="form-group">
+                        <label for="loan-account-number" class="required">Loan Account Number </label>
+                        <input id="loan-account-number" required autofocus type="text" formControlName="loanAccountNumber"
+                            minlength="14" maxlength="14" pattern="^[0-9]*$" class="is-valid"
+                            (keypress)="validateNumber($event)">
+                        <div *ngIf="loanAccountNumber.invalid && (loanAccountNumber.dirty || loanAccountNumber.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="loanAccountNumber.errors?.['required']">Loan Account number is required.</div>
+                            <div *ngIf="loanAccountNumber.errors?.['pattern']">Loan Account number must be number.</div>
+                            <div *ngIf="loanAccountNumber.errors?.['minlength']">Loan Account number must be 14 digits.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="form-group cursor-imp">
+                        <label for="account-type" class="required">Type of Account </label>
+                        <div>
+                            <div class="form-check form-check-inline ">
+                                <input class="form-check-input fs-14" type="radio" formControlName="accountType"
+                                    id="checking-account-type" value="Checking">
+                                <label class="form-check-label" for="checking-account-type">Checking</label>
+                            </div>
+                            <div class="form-check form-check-inline cursor fs-14">
+                                <input class="form-check-input" type="radio" formControlName="accountType"
+                                    id="debit-account-type" value="Debit">
+                                <label class="form-check-label" for="debit-account-type">Debit Card</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <ng-container *ngIf="isChecking" formGroupName="checkingTypeInfo">
+                    <div class="item bg-light">
+                        <div class="bg-light">
+                            <h5 class="card-text text-center fs-14 pt-2">Where I can find the routing and account number?
+                            </h5>
+                            <div class="img-c">
+                                <img src="assets/images/check.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="routing-number" class="required">Routing Number </label>
+                            <input id="routing-number" type="text" formControlName="routingNumber" class=""
+                                minlength="9" maxlength="9" pattern="^[0-9]*$" (keypress)="validateNumber($event)">
+                            <div *ngIf="routingNumber.invalid && (routingNumber.dirty || routingNumber.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="routingNumber.errors?.['required']">Routing number is required.</div>
+                                <div *ngIf="routingNumber.errors?.['pattern']">Must be number.</div>
+                                <div *ngIf="routingNumber.errors?.['minlength']">Must be 9 digits.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="bank-account-number" class="required">Bank Account Number </label>
+                            <input id="bank-account-number" type="text" formControlName="bankAccountNumber"
+                                minlength="12" maxlength="12" pattern="^[0-9]*$" class=""
+                                (keypress)="validateNumber($event)">
+                            <div *ngIf="bankAccountNumber.invalid && (bankAccountNumber.dirty || bankAccountNumber.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="bankAccountNumber.errors?.['required']">Bank Account number is required.</div>
+                                <div *ngIf="bankAccountNumber.errors?.['pattern']">Must be number.</div>
+                                <div *ngIf="bankAccountNumber.errors?.['minlength']">Must be 12 digits.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="confirm-bank-account-number" class="required">Confirm Bank Account Number </label>
+                            <input id="confirm-bank-account-number" type="text" minlength="12" maxlength="12"
+                                (keypress)="validateNumber($event)" pattern="^[0-9]*$"
+                                formControlName="confirmBankAccountNumber" class="">
+                            <div *ngIf="confirmBankAccountNumber.invalid && (confirmBankAccountNumber.dirty || confirmBankAccountNumber.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="confirmBankAccountNumber.errors?.['required']">Confirm Bank Account number is required.</div>
+                                <div *ngIf="confirmBankAccountNumber.errors?.['pattern']">Must be number.</div>
+                                <div *ngIf="confirmBankAccountNumber.errors?.['minlength']">Must be 12 digits.
+                                </div>
+
+                            </div>
+                            <div *ngIf="checkingTypeInfo.errors?.['unmatched']"
+                                class="alert alert-danger">
+                                <div>Not matched with
+                                    Bank
+                                    Account Number.</div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isDebit" formGroupName="debitTypeInfo">
+                    <div class="item bg-light">
+                        <div class="bg-light">
+                            <h5 class="card-text text-center fs-14 pt-2">Where I can find the cvv number?</h5>
+                            <div class="img-c">
+                                <img src="assets/images/cvv.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="card-number" class="required">Card Number </label>
+                            <input id="card-number" type="text" formControlName="cardNumber" class="" pattern="^[0-9]*$"
+                                minlength="16" maxlength="16" (keypress)="validateNumber($event)">
+                            <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cardNumber.errors?.['required']">Card number is required.</div>
+                                <div *ngIf="cardNumber.errors?.['pattern']">Must be number.</div>
+                                <div *ngIf="cardNumber.errors?.['minlength']">Must be 16 digits.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="name-on-card" class="required">Name On Card </label>
+                            <input id="name-on-card" type="text" formControlName="name" class=""
+                                (keypress)="validateString($event)" pattern="^[a-zA-Z_]*$" minlength="3" maxlength="50">
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                                <div *ngIf="name.errors?.['required']">Name is required.</div>
+                                <div *ngIf="name.errors?.['pattern']">Must be string.</div>
+                                <div *ngIf="name.errors?.['minlength']">Min length must be 3 characters.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="exp-cvv-grid">
+                            <div class="form-group exp-cvv-item">
+                                <label for="expiration" class="required">Expiration </label>
+                                <input id="expiration" type="month" formControlName="expirationDate" class="">
+                                <div *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="expirationDate.errors?.['required']">Expiration is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group exp-cvv-item">
+                                <label for="cvv" class="required">CVV: </label>
+                                <input id="cvv" type="text" formControlName="cvv" class="" pattern="^[0-9]*$"
+                                    maxlength="3" minlength="3" (keypress)="validateNumber($event)">
+                                <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="alert alert-danger">
+                                    <div *ngIf="cvv.errors?.['required']">CVV is required.</div>
+                                    <div *ngIf="cvv.errors?.['pattern']">Must be number.</div>
+                                    <div *ngIf="cvv.errors?.['minlength']">Must be 3 digits.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <button type="submit" class="btn mt-2 payment-btn" [disabled]="disableSubmit">MAKE PAYMENT</button>
+        </form>
+    </div>
+</div>

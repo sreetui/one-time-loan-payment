@@ -1,0 +1,24 @@
+.backdrop {
+  position: fixed;
+  background: rgba(0, 0, 0, .32);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.spinner-c{
+  position: fixed;
+  width: 20vw;
+  left: 40vw;
+  top: 10%;
+  z-index: 99;
+  text-align: center;
+  padding: 20px;
+}
+
+
+

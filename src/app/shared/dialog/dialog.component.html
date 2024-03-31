@@ -1,0 +1,9 @@
+
+<h2 class="font-weight-bold mb-2" mat-dialog-title>{{this.title}}</h2>
+<mat-dialog-content>
+  <p>{{this.content}} </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial class="ml-4" [mat-dialog-close]="CLOSE_MESSAGE" cdkFocusInitial
+    (click)="close()">Close</button>
+</mat-dialog-actions>

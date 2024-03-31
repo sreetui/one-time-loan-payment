@@ -1,0 +1,83 @@
+
+
+label{
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-bold);
+}
+label.required::after {
+    content:" *";
+    color: var(--red);
+  }
+button{
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-bold);
+}
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+.form-group{
+    margin-bottom: 0rem;
+}
+input{
+    display: block;
+    border: 0;
+    padding-left: .3rem;
+}
+input[type=text]{
+    width: 100%;
+}
+input[type=radio] + label.form-check-label{
+    cursor: pointer !important;
+}
+input:focus{
+    outline: none;
+}
+.img-c{
+    width: 100%;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    height: 100%;
+    max-width: 100%;
+}
+.form-group > label{
+    padding: .3rem;
+}
+.alert{
+    padding: 0;
+    padding-left:0.3rem;
+    margin-bottom: 0;
+    font-size: var(--font-size-12);
+    border-radius: 0;
+}
+.mat-mdc-dialog-panel{
+    position: fixed !important;
+    width: 20vw;
+    top: 10%;
+    z-index: 99;
+    text-align: center;
+    padding: 1.5rem;
+}
+.mat-mdc-dialog-title{
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+.form-check-inline > .form-check-input{
+    margin-left: 0.3rem;
+}
+.fs-14{
+    font-size: var(--font-size-14);
+}
+
+@media screen and (max-width:600px) {
+    h2{
+        font-size: 1.5rem;
+    }
+}

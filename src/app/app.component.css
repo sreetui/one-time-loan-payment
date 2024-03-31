@@ -1,0 +1,36 @@
+
+
+.main-container{
+    margin: 0 auto;
+    padding: 1rem 1rem 0 1rem;
+    width: 50vw;
+}
+
+@media screen and (max-width:1200px){
+    .main-container{
+        width: 60vw;
+    }
+    
+    
+}
+
+@media screen and (max-width:992px){
+    .main-container{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .main-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px){
+    .main-container{
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
