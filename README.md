@@ -7,6 +7,9 @@ This is responsive application. Please check "Loan Payment Screenshots.pdf" unde
 
 # Instructions
 Clone project
-run "npm install"
+
+run "npm install" from project root folder ( where package.json resides )
+
 run "ng serve" from project root folder ( where package.json resides )
+
 open browser and hit "http://localhost:4200" to run the application.
