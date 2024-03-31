@@ -1,7 +1,7 @@
 # one-time-loan-payment
 one-time-loan-payment
 
-# Notes
+# Description
 This is just a sample Loan Payment application to demonstrate the usage of Angular  Reactive forms with validations, Ngrx State management, RxJs operators, Signal/Computed Signal and standalone components.
 
 Supported browsers: Chrome
