@@ -6,6 +6,8 @@ This is just a sample Loan Payment application to demonstrate the usage of Angul
 
 This is responsive application. Please check "Loan Payment Screenshots.pdf" under root project "one-time-loan-payment" folder for detailed information
 
+https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf
+
 # Instructions
 Clone project
 
