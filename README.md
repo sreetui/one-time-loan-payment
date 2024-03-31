@@ -4,6 +4,8 @@ one-time-loan-payment
 # Notes
 This is just a sample Loan Payment application to demonstrate the usage of Angular  Reactive forms with validations, Ngrx State management, RxJs operators and standalone components.
 
+Supported browsers: Chrome
+
 This is responsive application. Please check "Loan Payment Screenshots.pdf" under root project "one-time-loan-payment" folder for detailed information
 
 https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf
