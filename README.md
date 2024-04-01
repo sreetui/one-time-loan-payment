@@ -8,9 +8,9 @@ Supported browsers: Chrome
 
 The payment layout is implemented by using CSS Grid.
 
-This is responsive application. Please check "Loan Payment Screenshots.pdf" under root project "one-time-loan-payment" folder for detailed information
+This is responsive application. Please check "[Loan Payment Screenshots.pdf](https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf)" under root project "one-time-loan-payment" folder for detailed information
 
-https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf
+
 
 # Instructions
 Clone project
