@@ -11,6 +11,7 @@ The payment layout is implemented by using CSS Grid.
 This is responsive application. Please check "[Loan Payment Screenshots.pdf](https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf)" under root project "one-time-loan-payment" folder for detailed information
 
 Please click the below link to access application directly from AWS Cloud.
+
 [Loan Payment](http://sreetui-loan-payment.s3-website-us-east-1.amazonaws.com/)
 
 
