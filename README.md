@@ -1,12 +1,20 @@
 # one-time-loan-payment
-one-time-loan-payment
+Application for Loan payment processing either through Checking type or thru Debit card.
 
-# Notes
-This is just a sample Loan Payment application to demonstrate the usage of Angular  Reactive forms with validations, Ngrx State management, RxJs operators and standalone components.
+# Description
+This is just a sample Loan Payment application to demonstrate the usage of Angular  Reactive forms with validations, Ngrx State management, RxJs operators, Signal/Computed Signal and standalone components.
 
-This is responsive application. Please check "Loan Payment Screenshots.pdf" under root project "one-time-loan-payment" folder for detailed information
+Supported browsers: Chrome
 
-https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf
+The payment layout is implemented by using CSS Grid.
+
+This is responsive application. Please check "[Loan Payment Screenshots.pdf](https://github.com/sreetui/one-time-loan-payment/blob/main/Loan%20Payment%20Screenshots.pdf)" under root project "one-time-loan-payment" folder for detailed information
+
+Please click the below link to access application directly from AWS Cloud.
+
+[Loan Payment](http://sreetui-loan-payment.s3-website-us-east-1.amazonaws.com/)
+
+
 
 # Instructions
 Clone project
