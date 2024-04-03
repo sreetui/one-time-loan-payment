@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="loan-account-number" class="required">Loan Account Number </label>
                         <input id="loan-account-number" required autofocus type="text" formControlName="loanAccountNumber"
-                            minlength="14" maxlength="14" pattern="^[0-9]*$" class="is-valid"
+                            minlength="14" maxlength="14" [pattern]="NUMBER_PATTERN" class="is-valid"
                             (keypress)="validateNumber($event)">
                         <div *ngIf="loanAccountNumber.invalid && (loanAccountNumber.dirty || loanAccountNumber.touched)"
                             class="alert alert-danger">
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label for="routing-number" class="required">Routing Number </label>
                             <input id="routing-number" type="text" formControlName="routingNumber" class=""
-                                minlength="9" maxlength="9" pattern="^[0-9]*$" (keypress)="validateNumber($event)">
+                                minlength="9" maxlength="9" [pattern]="NUMBER_PATTERN" (keypress)="validateNumber($event)">
                             <div *ngIf="routingNumber.invalid && (routingNumber.dirty || routingNumber.touched)"
                                 class="alert alert-danger">
                                 <div *ngIf="routingNumber.errors?.['required']">Routing number is required.</div>
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label for="bank-account-number" class="required">Bank Account Number </label>
                             <input id="bank-account-number" type="text" formControlName="bankAccountNumber"
-                                minlength="12" maxlength="12" pattern="^[0-9]*$" class=""
+                                minlength="12" maxlength="12" [pattern]="NUMBER_PATTERN" class=""
                                 (keypress)="validateNumber($event)">
                             <div *ngIf="bankAccountNumber.invalid && (bankAccountNumber.dirty || bankAccountNumber.touched)"
                                 class="alert alert-danger">
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label for="confirm-bank-account-number" class="required">Confirm Bank Account Number </label>
                             <input id="confirm-bank-account-number" type="text" minlength="12" maxlength="12"
-                                (keypress)="validateNumber($event)" pattern="^[0-9]*$"
+                                (keypress)="validateNumber($event)" [pattern]="NUMBER_PATTERN"
                                 formControlName="confirmBankAccountNumber" class="">
                             <div *ngIf="confirmBankAccountNumber.invalid && (confirmBankAccountNumber.dirty || confirmBankAccountNumber.touched)"
                                 class="alert alert-danger">
@@ -112,7 +112,7 @@
                     <div class="item">
                         <div class="form-group">
                             <label for="card-number" class="required">Card Number </label>
-                            <input id="card-number" type="text" formControlName="cardNumber" class="" pattern="^[0-9]*$"
+                            <input id="card-number" type="text" formControlName="cardNumber" class="" [pattern]="NUMBER_PATTERN"
                                 minlength="16" maxlength="16" (keypress)="validateNumber($event)">
                             <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
                                 class="alert alert-danger">
@@ -126,7 +126,7 @@
                         <div class="form-group">
                             <label for="name-on-card" class="required">Name On Card </label>
                             <input id="name-on-card" type="text" formControlName="name" class=""
-                                (keypress)="validateString($event)" pattern="^[a-zA-Z_]*$" minlength="3" maxlength="50">
+                                (keypress)="validateString($event)" [pattern]="STRING_PATTERN" minlength="3" maxlength="50">
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                                 <div *ngIf="name.errors?.['required']">Name is required.</div>
                                 <div *ngIf="name.errors?.['pattern']">Must be string.</div>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="form-group exp-cvv-item">
                                 <label for="cvv" class="required">CVV</label>
-                                <input id="cvv" type="text" formControlName="cvv" class="" pattern="^[0-9]*$"
+                                <input id="cvv" type="text" formControlName="cvv" class="" [pattern]="NUMBER_PATTERN"
                                     maxlength="3" minlength="3" (keypress)="validateNumber($event)">
                                 <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="alert alert-danger">
                                     <div *ngIf="cvv.errors?.['required']">CVV is required.</div>

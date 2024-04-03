@@ -24,6 +24,8 @@ export class PaymentComponent implements OnInit {
   readonly DEBIT_TYPE = "Debit";
   readonly CHECKING_TYPE = "Checking";
   readonly STYLE:{[key:string]: any} = {'width': '3rem', 'height': '3rem'};
+  readonly NUMBER_PATTERN = "^[0-9]*$";
+  readonly STRING_PATTERN = "^[a-zA-Z_]*$";
   
   readonly currentDate = signal(new Date());
   expirationDateMin: Signal<string> = computed(() => {
