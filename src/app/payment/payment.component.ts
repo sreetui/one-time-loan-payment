@@ -1,7 +1,7 @@
 import { AsyncPipe, JsonPipe, NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import { Component, OnInit, Signal, computed, inject, signal } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { bankNumberConfirmBankNumberValidator, numberPatternFunction, wordPatternFunction } from './services/payment-validators.service';
+import { bankNumberConfirmBankNumberValidator, maxLengthValidator, minLengthValidator, numberPatternFunction, requiredValidator, wordPatternFunction } from './services/payment-validators.service';
 import { PaymentFacade } from './state/payment.facade';
 import { Payment, PaymentResponse } from './state/model/payment';
 import { BehaviorSubject, Subject, count } from 'rxjs';
@@ -41,18 +41,18 @@ export class PaymentComponent implements OnInit {
 
   paymentFB = inject(FormBuilder);
   paymentForm = this.paymentFB.group({
-    loanAccountNumber: ['', [Validators.required, numberPatternFunction, Validators.minLength(14)]],
+    loanAccountNumber: ['', [requiredValidator, numberPatternFunction, minLengthValidator(14)]],
     accountType: [this.CHECKING_TYPE],
     debitTypeInfo: this.paymentFB.group({
-      cardNumber: ['', [Validators.required, numberPatternFunction, Validators.minLength(16)]],
-      name: ['', [Validators.required, wordPatternFunction, Validators.minLength(3), Validators.maxLength(50)]],
-      expirationDate: ['', [Validators.required]],
-      cvv: ['', [Validators.required, numberPatternFunction, Validators.minLength(3)]]
+      cardNumber: ['', [requiredValidator, numberPatternFunction, minLengthValidator(16)]],
+      name: ['', [requiredValidator, wordPatternFunction, minLengthValidator(3), maxLengthValidator(50)]],
+      expirationDate: ['', [requiredValidator]],
+      cvv: ['', [requiredValidator, numberPatternFunction, minLengthValidator(3)]]
     }),
     checkingTypeInfo: this.paymentFB.group({
-      routingNumber: ['', [Validators.required, numberPatternFunction, Validators.minLength(9)]],
-      bankAccountNumber: ['', [Validators.required, numberPatternFunction, Validators.minLength(12)]],
-      confirmBankAccountNumber: ['', [Validators.required, numberPatternFunction]],
+      routingNumber: ['', [requiredValidator, numberPatternFunction, minLengthValidator(9)]],
+      bankAccountNumber: ['', [requiredValidator, numberPatternFunction, minLengthValidator(12)]],
+      confirmBankAccountNumber: ['', [requiredValidator, numberPatternFunction]],
     },{
       asyncValidators: [bankNumberConfirmBankNumberValidator()]
     })
@@ -160,7 +160,7 @@ export class PaymentComponent implements OnInit {
   onSuccessfulPayment(confirmationNumber: string) {
     this.processingPayment.next(false);
     const enterAnimationDuration = "500ms";
-    const exitAnimationDuration = "500ms";
+    const exitAnimationDuration = "400ms";
     const openDialog = this.matDialog.open(DialogComponent, {
       width: '25rem',
       enterAnimationDuration,

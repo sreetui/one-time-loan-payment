@@ -4,6 +4,9 @@ import { Observable, of } from "rxjs";
 
 export const numberPatternFunction = Validators.pattern('^[0-9]*$');
 export const wordPatternFunction = Validators.pattern('^[a-zA-Z_]*$');
+export const requiredValidator = Validators.required;
+export const minLengthValidator = Validators.minLength;
+export const maxLengthValidator = Validators.maxLength;
 
 export function bankNumberConfirmBankNumberValidator(): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {
