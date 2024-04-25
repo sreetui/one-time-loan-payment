@@ -5,7 +5,7 @@
         <ng-container *ngIf="processingPayment | async">
             <app-spinner [style]="STYLE"></app-spinner>
         </ng-container>
-        <form [formGroup]="paymentForm" #formDir="ngForm" (ngSubmit)="makePayment()">
+        <form [formGroup]="paymentForm" #formDir="ngForm" (ngSubmit)="makePayment()" name="Payment Form" aria-label="Payment Form">
             <div class="grid-container">
                 <div class="item">
                     <div class="form-group">
