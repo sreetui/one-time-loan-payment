@@ -15,9 +15,9 @@
                             (keypress)="validateNumber($event)">
                         <div *ngIf="loanAccountNumber.invalid && (loanAccountNumber.dirty || loanAccountNumber.touched)"
                             class="alert alert-danger">
-                            <div *ngIf="loanAccountNumber.errors?.['required']">Loan Account number is required.</div>
-                            <div *ngIf="loanAccountNumber.errors?.['pattern']">Loan Account number must be number.</div>
-                            <div *ngIf="loanAccountNumber.errors?.['minlength']">Loan Account number must be 14 digits.
+                            <div *ngIf="loanAccountNumber.errors?.['required']" role="alert">Loan Account number is required.</div>
+                            <div *ngIf="loanAccountNumber.errors?.['pattern']" role="alert">Loan Account number must be number.</div>
+                            <div *ngIf="loanAccountNumber.errors?.['minlength']" role="alert">Loan Account number must be 14 digits.
                             </div>
                         </div>
                     </div>
@@ -57,9 +57,9 @@
                                 minlength="9" maxlength="9" [pattern]="NUMBER_PATTERN" (keypress)="validateNumber($event)">
                             <div *ngIf="routingNumber.invalid && (routingNumber.dirty || routingNumber.touched)"
                                 class="alert alert-danger">
-                                <div *ngIf="routingNumber.errors?.['required']">Routing number is required.</div>
-                                <div *ngIf="routingNumber.errors?.['pattern']">Must be number.</div>
-                                <div *ngIf="routingNumber.errors?.['minlength']">Must be 9 digits.</div>
+                                <div *ngIf="routingNumber.errors?.['required']" role="alert">Routing number is required.</div>
+                                <div *ngIf="routingNumber.errors?.['pattern']" role="alert">Must be number.</div>
+                                <div *ngIf="routingNumber.errors?.['minlength']" role="alert">Must be 9 digits.</div>
                             </div>
                         </div>
                     </div>
@@ -71,9 +71,9 @@
                                 (keypress)="validateNumber($event)">
                             <div *ngIf="bankAccountNumber.invalid && (bankAccountNumber.dirty || bankAccountNumber.touched)"
                                 class="alert alert-danger">
-                                <div *ngIf="bankAccountNumber.errors?.['required']">Bank Account number is required.</div>
-                                <div *ngIf="bankAccountNumber.errors?.['pattern']">Must be number.</div>
-                                <div *ngIf="bankAccountNumber.errors?.['minlength']">Must be 12 digits.</div>
+                                <div *ngIf="bankAccountNumber.errors?.['required']" role="alert">Bank Account number is required.</div>
+                                <div *ngIf="bankAccountNumber.errors?.['pattern']" role="alert">Must be number.</div>
+                                <div *ngIf="bankAccountNumber.errors?.['minlength']" role="alert">Must be 12 digits.</div>
                             </div>
                         </div>
                     </div>
@@ -85,9 +85,9 @@
                                 formControlName="confirmBankAccountNumber" class="">
                             <div *ngIf="confirmBankAccountNumber.invalid && (confirmBankAccountNumber.dirty || confirmBankAccountNumber.touched)"
                                 class="alert alert-danger">
-                                <div *ngIf="confirmBankAccountNumber.errors?.['required']">Confirm Bank Account number is required.</div>
-                                <div *ngIf="confirmBankAccountNumber.errors?.['pattern']">Must be number.</div>
-                                <div *ngIf="confirmBankAccountNumber.errors?.['minlength']">Must be 12 digits.
+                                <div *ngIf="confirmBankAccountNumber.errors?.['required']" role="alert">Confirm Bank Account number is required.</div>
+                                <div *ngIf="confirmBankAccountNumber.errors?.['pattern']" role="alert">Must be number.</div>
+                                <div *ngIf="confirmBankAccountNumber.errors?.['minlength']" role="alert">Must be 12 digits.
                                 </div>
 
                             </div>
@@ -116,9 +116,9 @@
                                 minlength="16" maxlength="16" (keypress)="validateNumber($event)">
                             <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
                                 class="alert alert-danger">
-                                <div *ngIf="cardNumber.errors?.['required']">Card number is required.</div>
-                                <div *ngIf="cardNumber.errors?.['pattern']">Must be number.</div>
-                                <div *ngIf="cardNumber.errors?.['minlength']">Must be 16 digits.</div>
+                                <div *ngIf="cardNumber.errors?.['required']" role="alert">Card number is required.</div>
+                                <div *ngIf="cardNumber.errors?.['pattern']" role="alert">Must be number.</div>
+                                <div *ngIf="cardNumber.errors?.['minlength']" role="alert">Must be 16 digits.</div>
                             </div>
                         </div>
                     </div>
@@ -128,9 +128,9 @@
                             <input id="name-on-card" type="text" formControlName="name" class=""
                                 (keypress)="validateString($event)" [pattern]="STRING_PATTERN" minlength="3" maxlength="50">
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-                                <div *ngIf="name.errors?.['required']">Name is required.</div>
-                                <div *ngIf="name.errors?.['pattern']">Must be string.</div>
-                                <div *ngIf="name.errors?.['minlength']">Min length must be 3 characters.</div>
+                                <div *ngIf="name.errors?.['required']" role="alert">Name is required.</div>
+                                <div *ngIf="name.errors?.['pattern']" role="alert">Must be string.</div>
+                                <div *ngIf="name.errors?.['minlength']" role="alert">Min length must be 3 characters.</div>
                             </div>
                         </div>
                     </div>
@@ -149,9 +149,9 @@
                                 <input id="cvv" type="text" formControlName="cvv" class="" [pattern]="NUMBER_PATTERN"
                                     maxlength="3" minlength="3" (keypress)="validateNumber($event)">
                                 <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="alert alert-danger">
-                                    <div *ngIf="cvv.errors?.['required']">CVV is required.</div>
-                                    <div *ngIf="cvv.errors?.['pattern']">Must be number.</div>
-                                    <div *ngIf="cvv.errors?.['minlength']">Must be 3 digits.</div>
+                                    <div *ngIf="cvv.errors?.['required']" role="alert">CVV is required.</div>
+                                    <div *ngIf="cvv.errors?.['pattern']" role="alert">Must be number.</div>
+                                    <div *ngIf="cvv.errors?.['minlength']" role="alert">Must be 3 digits.</div>
                                 </div>
                             </div>
                         </div>

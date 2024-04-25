@@ -40,7 +40,7 @@ export class PaymentComponent implements OnInit {
   });
 
   paymentFB = inject(FormBuilder);
-  paymentForm = this.paymentFB.group({
+  paymentForm = this.paymentFB.nonNullable.group({
     loanAccountNumber: ['', [requiredValidator, numberPatternFunction, minLengthValidator(14)]],
     accountType: [this.CHECKING_TYPE],
     debitTypeInfo: this.paymentFB.group({
